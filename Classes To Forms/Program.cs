@@ -25,10 +25,11 @@ namespace Classes_To_Forms
                 Console.WriteLine();
                 Console.WriteLine("    Description :");
                 Console.WriteLine();
-                Console.WriteLine("      Create Win dows Form with components the and form:");
+                Console.WriteLine("      Create Win dows Form with components the and form");
+                Console.WriteLine();
+                Console.WriteLine("     GitHub : https://github.com/AndetonAf/ClassToForm");
                 Console.WriteLine();
 
-                Console.Read();
                 return;
             }
 
@@ -42,7 +43,6 @@ namespace Classes_To_Forms
                 Console.WriteLine("File not found.");
             }
 
-            Console.Read();
         }
 
         static void Generate(string path)
@@ -57,9 +57,6 @@ namespace Classes_To_Forms
             string componentsVariable = ComponentsVariable(variables);
             string componentsAddControl = ComponentsAddControl(variables);
             GenerateDesigner(path, _namespace, componentsInitiate, componentsSet, componentsAddControl, componentsVariable);
-            Console.WriteLine(componentsInitiate);
-            Console.WriteLine(componentsSet);
-            Console.WriteLine(componentsVariable);
         }
 
         static string GetNamespace(string path)
@@ -91,7 +88,6 @@ namespace Classes_To_Forms
                 }
                 if (line.IndexOf(";") > -1 && insideClass)
                 {
-                    Console.WriteLine(line.Remove(line.Length - 1).Split(" ")[line.Split(" ").Length - 1]);
                     variables.Add(line.Remove(line.Length - 1).Split(" ")[line.Split(" ").Length - 1]);
                 }
             }
@@ -132,9 +128,10 @@ namespace Classes_To_Forms
             string name = file.Name.Split('.')[0];
             string form = "using System.Windows.Forms;\r\n\r\nnamespace " + _namespace + "\r\n{\r\n\tpublic partial class FormClass" + name + ": Form\r\n\t{\r\n\t\t"+"public "+name+ " data = new " + name + "();\r\n\t\tpublic FormClass" + name + "()\r\n\t\t{\r\n\t\t\tInitializeComponent();\r\n\t\t}" + get + set + "\r\n\t}\r\n}";
 
-            string output = @"C:\Users\Andeton\source\repos\Testes\Testes\FormClass" + file.Name;
+            string output = @file.DirectoryName+"\\FormClass" + file.Name;
+            Console.WriteLine("Created FormClass" + file.Name);
+
             System.IO.File.WriteAllText(output, form);
-            Console.WriteLine(form);
         }
 
         static string ComponentsInitiate(List<string> variables)
@@ -201,8 +198,9 @@ namespace Classes_To_Forms
             FileInfo file = new FileInfo(path);
             string name = file.Name.Split('.')[0];
             string designer = "namespace "+_namespace+ "\r\n{\r\n\tpartial class FormClass" + name+"\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// Required designer variable.\r\n\t\t/// </summary>\r\n\t\tprivate System.ComponentModel.IContainer components = null;\r\n\r\n\t\t/// <summary>\r\n\t\t/// Clean up any resources being used.\r\n\t\t/// </summary>\r\n\t\t/// <param name=\"disposing\">true if managed resources should be disposed; otherwise, false.</param>\r\n\t\tprotected override void Dispose(bool disposing)\r\n\t\t{\r\n\t\t\tif (disposing && (components != null))\r\n\t\t\t{\r\n\t\t\t\tcomponents.Dispose();\r\n\t\t\t}\r\n\t\t\tbase.Dispose(disposing);\r\n\t\t}\r\n\r\n\t\t#region Windows Form Designer generated code\r\n\r\n\t\t/// <summary>\r\n\t\t/// Required method for Designer support - do not modify\r\n\t\t/// the contents of this method with the code editor.\r\n\t\t/// </summary>\r\n\t\tprivate void InitializeComponent()\r\n\t\t{\r\n\t\t\t"+componentsInitiate+"\r\n\t\t\tthis.SuspendLayout();\r\n\t\t\t"+componentsSet+"\r\n\t\t\t// \r\n\t\t\t// "+name+"\r\n\t\t\t// \r\n\t\t\tthis.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);\r\n\t\t\tthis.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;\r\n\t\t\tthis.ClientSize = new System.Drawing.Size(800, 450);\r\n\t\t\t "+ componentsAddControl + "\r\n\t\t\tthis.Name = \""+name+"\";\r\n\t\t\tthis.Text = \""+name+"\";\r\n\t\t\tthis.ResumeLayout(false);\r\n\r\n\t\t}\r\n\r\n\t\t#endregion\r\n\t\t\r\n\t\t" + componentsVariable + "\r\n\t}\r\n}";
-            string output = @"C:\Users\Andeton\source\repos\Testes\Testes\FormClass" + name + ".Designer.cs";
+            string output = @file.DirectoryName+"\\FormClass" + name + ".Designer.cs";
             System.IO.File.WriteAllText(output, designer);
+            Console.WriteLine("Created FormClass" + name + ".Designer.cs");
         }
 
     }
