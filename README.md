@@ -9,6 +9,13 @@ Class To Form is a console application in C # that creates a WindowsForm also in
 
 The idea is to make the creation of screens faster by making only the class and at most organizing the screens in the graphic part.
 
+How to use
+-------
+"Class To Form.exe" path/class.cs<br><br>
+Result :<br><br>
+Created FormClassUsers.cs<br>
+Created FormClassUsers.Designer.cs
+
 License
 -------
 
