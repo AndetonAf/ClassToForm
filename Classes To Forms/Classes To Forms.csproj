@@ -7,10 +7,11 @@
     <AssemblyName>Class To Form</AssemblyName>
     <Title>Class To Form</Title>
     <Authors>Andeton Feitosa</Authors>
-    <PackageTags>Class, Form</PackageTags>
+    <PackageTags>Class, Form, CToF</PackageTags>
     <Description>Generates a Windows form with a form, based on a class</Description>
     <PackageId>ClassToForm</PackageId>
-    <PackageLicenseExpression>https://github.com/AndetonAf/ClassToForm/blob/master/LICENSE</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/AndetonAf/ClassToForm</RepositoryUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.4' ">$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
 
 </Project>
