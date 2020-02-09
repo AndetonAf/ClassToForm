@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>Class_To_Form</RootNamespace>
+    <AssemblyName>Class To Form</AssemblyName>
+    <Title>Class To Form</Title>
+    <Authors>Andeton Feitosa</Authors>
+    <PackageTags>Class, Form</PackageTags>
+    <Description>Generates a Windows form with a form, based on a class</Description>
+    <PackageId>ClassToForm</PackageId>
+    <PackageLicenseExpression>https://github.com/AndetonAf/ClassToForm/blob/master/LICENSE</PackageLicenseExpression>
+  </PropertyGroup>
+
+</Project>

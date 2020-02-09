@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Classes To Forms": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Andeton\\source\\repos\\Classes To Forms\\Classes To Forms\\Users.cs\""
+    },
+    "Class To Form": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Andeton\\source\\repos\\Classes To Forms\\Classes To Forms\\Users.cs\""
+    }
+  }
+}
